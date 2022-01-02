@@ -7,7 +7,7 @@ var countConsistentStrings = function(allowed, words) {
     let count = 0;
     const wordJson = new Set(allowed);
     for(const word of words) {
-        const isAllPresent = word.split('').every((item) => wordJson.has(item));
+        const isAllPresent = [...new Set(word.split(''))].every((item) => wordJson.has(item));
         if(isAllPresent) count++;
     }
     return count;
