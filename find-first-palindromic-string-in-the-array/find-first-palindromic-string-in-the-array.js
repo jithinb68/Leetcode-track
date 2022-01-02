@@ -3,12 +3,15 @@
  * @return {string}
  */
 var firstPalindrome = function(words) {
-    let palindromicString = "";
-    for(const word of words) {
-        if(word === word.split('').reverse().join('')) {
-            palindromicString = word;
-            break;
-        }
-    }
-    return palindromicString
+    for (const word of words)
+        if (isPalindrome(word)) return word;
+    return '';
+};
+
+const isPalindrome = str => {
+    let i = 0, j = str.length - 1;
+    while (i < j)
+        if (str[i++] != str[j--])
+            return false;
+    return true;
 };
