@@ -8,10 +8,7 @@ var maxDepth = function(s) {
    let strArr = s.split('');
     for(const item of strArr) {
         if(item === '(') {
-            maxNestingDepth++;
-            if(maxNestingDepth > currMaxDepth) {
-                currMaxDepth = maxNestingDepth;
-            }
+            currMaxDepth = Math.max(++maxNestingDepth, currMaxDepth)
         } else if(item === ')') {
             maxNestingDepth--;
         }
