@@ -3,22 +3,19 @@
  * @return {string}
  */
 var removeOuterParentheses = function(s) {
-    let strArr = s.split('');
-    let stack = [];
-    let backupStack = [];
     let finalStr = "";
-    for( const item of strArr) {
-        backupStack.push(item);
+    let myVar = 0;
+    for( const item of s) {
         if(item === '(') {
-            stack.push(item);
-        } else if(item === ')') {
-            stack.pop();
-        }
-        if(!stack.length) {
-            backupStack.shift();
-            backupStack.pop();
-            finalStr += backupStack.join('');
-            backupStack = [];
+            if(myVar) {
+                 finalStr += item
+            }
+            myVar++
+        } else {
+            myVar--
+            if(myVar) {
+                 finalStr += item
+            }
         }
     }
     return finalStr;
