@@ -19,10 +19,6 @@ var maxDepth = function(s) {
         } else if(item === ')') {
             stack.pop();
             maxNestingDepth--;
-        } else {
-            if(maxNestingDepth > currMaxDepth) {
-                currMaxDepth = maxNestingDepth;
-            }
         }
     }
     return currMaxDepth;
