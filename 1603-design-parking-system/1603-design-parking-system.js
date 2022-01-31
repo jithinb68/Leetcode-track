@@ -5,11 +5,10 @@
  */
 var ParkingSystem = function(big, medium, small) {
     this.parkingSystem = {
-        'small': small,
-        'medium': medium,
-        'big': big
+        '1': { 'type': 'big', 'vacancy': big },
+        '2': { 'type': 'medium', 'vacancy': medium },
+        '3': { 'type': 'small', 'vacancy': small }
     };
-    // console.log(this.parkingSystem);
 };
 
 /** 
@@ -17,17 +16,11 @@ var ParkingSystem = function(big, medium, small) {
  * @return {boolean}
  */
 ParkingSystem.prototype.addCar = function(carType) {
-    const hashMap = {
-        1: 'big',
-        2: 'medium',
-        3: 'small'
-    }
-    if(this.parkingSystem[hashMap[carType]]) {
-        this.parkingSystem[hashMap[carType]]--;
+    if(this.parkingSystem[carType].vacancy) {
+        this.parkingSystem[carType].vacancy--;
         return true
-    } else {
-        return false;
     }
+    return false;
 };
 
 /** 
