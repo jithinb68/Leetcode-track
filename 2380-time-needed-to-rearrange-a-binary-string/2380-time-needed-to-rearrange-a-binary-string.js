@@ -3,13 +3,14 @@
  * @return {number}const isReplaced = false;
  */
 var secondsToRemoveOccurrences = function(s) {
-   let secondsTaken = 0;
+   let secondsTaken = -1;
    s = s.split('');
    function replaceFindings(s) {
+        secondsTaken++;
         const sLen = s.length;
         let isReplaced = false;
         for(let i=0; i<=sLen; i++) {
-            if(s[i]==='0' && s[i+1]==='1') {
+            if(i < s.length-1 && s[i] < s[i+1]) {
                 isReplaced = true;
                 s[i] = '1';
                 s[i+1] = '0';
@@ -17,7 +18,6 @@ var secondsToRemoveOccurrences = function(s) {
             }
         }
         if(isReplaced) {
-            secondsTaken++;
             isReplaced = false;
             replaceFindings(s)
         }
