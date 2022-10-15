@@ -3,10 +3,12 @@
  * @return {number}
  */
 var findMin = function(nums) {
-    for(let i=1; i<nums.length; i++) {
-        if(nums[i] < nums[i-1]) {
-            return nums[i];
-        }
-    }
-    return nums[0];
+        let l = 0;
+      let r = nums.length - 1;
+      while (l < r) {
+        const m = ~~((l + r) / 2);
+        if (nums[m] > nums[r]) l = m + 1;
+        else r = m;
+      }
+      return nums[l];
 };
